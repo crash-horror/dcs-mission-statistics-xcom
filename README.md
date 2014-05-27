@@ -44,8 +44,11 @@ Upload or distribute the html file.
 
 I came across one generated CSV that refused to comply for reasons yet unknown.
 
+## acknowledgements:
 
+This script is based on the work by xcom (http://forums.eagle.ru/member.php?u=90838)
+Also the html output is a direct copy of his work.
 
-Buy me a beer:
+#### Buy me a beer:
 
-	Bitcoin: 15Ty4oCTxSxC9jwx7ViosdhFcetKbqChoM
+Bitcoin: 15Ty4oCTxSxC9jwx7ViosdhFcetKbqChoM
