@@ -42,7 +42,7 @@ Upload or distribute the html file.
 
 ## Bugs:
 
-I came across one generated CSV that refused to comply for reasons yet unknown.
+No known bugs at this point. :happyface:
 
 ## Acknowledgements:
 
