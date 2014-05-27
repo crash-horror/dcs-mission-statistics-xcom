@@ -113,8 +113,8 @@ def event_table(dictionarylist):
         if row['Event'] in interestEvent:
             deadlist.append(row)
 
-    # for shit in deadlist:  # <<=============================== DEBUG
-    #     print(shit)
+    # for something in deadlist:  # <<=============================== DEBUG
+    #     print(something)
 
     for rowDEAD in deadlist:
         for row in dictionarylist:
@@ -294,8 +294,8 @@ dictREAD = list(dict_read_iterator)
 
 # (logic & cli) function calls
 # -------------------------------------------------------
-# for shit in dictREAD: # <<=============================== DEBUG
-#   print(shit)
+# for something in dictREAD: # <<=============================== DEBUG
+#   print(something)
 
 eventTABLElist, totaldeadTABLElist = event_table(dictREAD)
 totalKILLSlist = total_losses_table(totaldeadTABLElist)
