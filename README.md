@@ -8,7 +8,8 @@ The OP uses php and a database to get the statistics from a CSV file generated b
 
 You still need the code to get the data out of the game and create the CSV file. So you must follow step #3 provided in that post.
 
-### step #3:
+## Step #3:
+
 a. Go into your mission, in the initialization script that start with the mission add the following - https://copy.com/0M27qJ8Fj7Co
 
 b. In your mission, do a trigger that runs according to whenever you want to save stats and runs the following script - https://copy.com/xgdLUv0ZfFYK
@@ -27,5 +28,24 @@ end
 
 d. Make sure to create the folder Save_stat in your Saved Games\DCS\Logs folder.
 
-*Example of a CSV file - (https://copy.com/ipElh4ybWLpM)
+Example of a CSV file - (https://copy.com/ipElh4ybWLpM)
 
+## Running the script:
+
+Run the script, a file dialog pops up, open the mission's CSV file.
+
+If all goes well, the file is parsed, a dialog appears to note success, press OK.
+
+A html file is generated at your desktop with the stats and your browser opens to display it.
+
+Upload or distribute the html file.
+
+## Bugs:
+
+I came across one generated CSV that refused to comply for reasons yet unknown.
+
+
+
+Buy me a beer:
+
+	Bitcoin: 15Ty4oCTxSxC9jwx7ViosdhFcetKbqChoM
