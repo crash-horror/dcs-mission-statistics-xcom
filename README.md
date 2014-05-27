@@ -44,7 +44,7 @@ Upload or distribute the html file.
 
 I came across one generated CSV that refused to comply for reasons yet unknown.
 
-## acknowledgements:
+## Acknowledgements:
 
 This script is based on the work by xcom (http://forums.eagle.ru/member.php?u=90838).
 
