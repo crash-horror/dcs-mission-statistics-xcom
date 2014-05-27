@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-version = 0.15
+version = 0.16
 
 #############################################################
 # This monstrosity was created by crash_horror (373vFS_Crash)
@@ -118,12 +118,12 @@ def event_table(dictionarylist):
 
     for rowDEAD in deadlist:
         for row in dictionarylist:
-            if row['Target ID'] == rowDEAD['Initiator ID']:
+            if rowDEAD['Initiator ID'] == row['Target ID']:
                 eventROW = dict(row)
                 # print(row)  # <<=============================== DEBUG
                 eventROW['Event'] = rowDEAD['Event']
                 eventROW['Time'] = rowDEAD['Time']
-        eventlist.append(eventROW)
+                eventlist.append(eventROW)
 
         # remove duplicates
         fixeventlist = []
