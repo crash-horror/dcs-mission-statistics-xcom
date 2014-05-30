@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-version = 0.16
+version = 0.18
 
 #############################################################
 # This monstrosity was created by crash_horror (373vFS_Crash)
@@ -36,18 +36,18 @@ htmlpath = homedir + "/Desktop/mission_stat.html"
 
 # cli output
 # -------------------------------------------------------
-def print_event_row(row):
+def print_event_row(_row):
 
     for key in interestTable:
-        print(row[key], end=' | ')
+        print(_row[key], end=' | ')
     print()
 
 
-def print_pilotstat(dictionarylist):
+def print_pilotstat(_dictionarylist):
 
     print('Pilot\t\t\tGround\tPlane\tHeli\tShip\tTotal')
 
-    for row in dictionarylist:
+    for row in _dictionarylist:
 
         if len(row['PILOT']) < 8:
             print(row['PILOT'], end='\t\t\t')
@@ -61,10 +61,10 @@ def print_pilotstat(dictionarylist):
         print()
 
 
-def print_total_losses_table(listof2dicts):
+def print_total_losses_table(_listof2dicts):
 
     print('Losses\tGround\tPlane\tHeli\tShip\tTotal')
-    for row in listof2dicts:
+    for row in _listof2dicts:
         for i in coalitionStatKEYS:
             print(row[i], end='\t')
         print()
@@ -72,13 +72,13 @@ def print_total_losses_table(listof2dicts):
 
 # logic
 # -------------------------------------------------------
-def total_losses_table(dictionarylist):
+def total_losses_table(_dictionarylist):
 
     bluelist = []
     redlist = []
     losseslist = []
 
-    for row in dictionarylist:
+    for row in _dictionarylist:
         if row['Initiator Coalition'] == 'blue':
             bluelist.append(row['Initiator Group Category'])
 
@@ -104,23 +104,19 @@ def total_losses_table(dictionarylist):
     return losseslist
 
 
-def event_table(dictionarylist):
+def event_table(_dictionarylist):
 
     deadlist = []
     eventlist = []
 
-    for row in dictionarylist:
+    for row in _dictionarylist:
         if row['Event'] in interestEvent:
             deadlist.append(row)
 
-    # for something in deadlist:  # <<=============================== DEBUG
-    #     print(something)
-
     for rowDEAD in deadlist:
-        for row in dictionarylist:
+        for row in _dictionarylist:
             if rowDEAD['Initiator ID'] == row['Target ID']:
                 eventROW = dict(row)
-                # print(row)  # <<=============================== DEBUG
                 eventROW['Event'] = rowDEAD['Event']
                 eventROW['Time'] = rowDEAD['Time']
                 eventlist.append(eventROW)
@@ -134,12 +130,12 @@ def event_table(dictionarylist):
     return fixeventlist, deadlist
 
 
-def kill_table(dictionarylist):
+def kill_table(_dictionarylist):
 
     playerlist = []
     pilotStatLIST = []
 
-    for row in dictionarylist:
+    for row in _dictionarylist:
         if row['Initiator Player'] not in playerlist:
             playerlist.append(row['Initiator Player'])
 
@@ -148,7 +144,7 @@ def kill_table(dictionarylist):
         pilotROW['PILOT'] = pilot
         totalsum = 0
         for elmnt in interestTarget:
-            for row in dictionarylist:
+            for row in _dictionarylist:
                 if row['Target Group Category'] == elmnt and row['Initiator Player'] == pilot:
                     pilotROW[elmnt] += 1
                     totalsum += 1
@@ -161,7 +157,8 @@ def kill_table(dictionarylist):
 
 # html output
 # -------------------------------------------------------
-def html_coalition(listof2dicts):
+def html_coalition(_listof2dicts):
+
     outhtmlfile = open(htmlpath, 'a')
     outhtmlfile.write("""<html>
 <head>
@@ -211,7 +208,7 @@ LOSSES BY COALITION:
   </tr>
 """)
 
-    for row in listof2dicts:
+    for row in _listof2dicts:
         outhtmlfile.write("""   <tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
 """)
         for i in coalitionStatKEYS:
@@ -221,7 +218,8 @@ LOSSES BY COALITION:
     outhtmlfile.close()
 
 
-def html_pilot_kills(dictionarylist):
+def html_pilot_kills(_dictionarylist):
+
     outhtmlfile = open(htmlpath, 'a')
     outhtmlfile.write("""DESTROYED UNITS BY PILOT:
 <table class= "hovertable" id="box-table-b">
@@ -235,7 +233,7 @@ def html_pilot_kills(dictionarylist):
   </tr>
 """)
 
-    for row in dictionarylist:
+    for row in _dictionarylist:
         outhtmlfile.write("""   <tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
 """)
         for j in pilotStatKEYS:
@@ -245,7 +243,8 @@ def html_pilot_kills(dictionarylist):
     outhtmlfile.close()
 
 
-def html_event_table(dictionarylist):
+def html_event_table():
+
     outhtmlfile = open(htmlpath, 'a')
     outhtmlfile.write("""EVENT TABLE:
  <table class= "hovertable" id="box-table-b">
@@ -294,8 +293,6 @@ dictREAD = list(dict_read_iterator)
 
 # (logic & cli) function calls
 # -------------------------------------------------------
-# for something in dictREAD: # <<=============================== DEBUG
-#   print(something)
 
 eventTABLElist, totaldeadTABLElist = event_table(dictREAD)
 totalKILLSlist = total_losses_table(totaldeadTABLElist)
@@ -321,7 +318,7 @@ print('-'*80)
 # -------------------------------------------------------
 html_coalition(SORTED_totalKILLSlist)
 html_pilot_kills(SORTED_KILLlist)
-html_event_table(eventTABLElist)
+html_event_table()
 
 
 # message & open in browser & exit
