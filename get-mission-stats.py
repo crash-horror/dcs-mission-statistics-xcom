@@ -5,7 +5,7 @@ version = 0.18
 #############################################################
 # This monstrosity was created by crash_horror (373vFS_Crash)
 # and comes without warranty of any kind,
-# read the licence at the bottom.
+# read the license at the bottom.
 # (https://github.com/crash-horror)
 #############################################################
 
@@ -337,7 +337,7 @@ root.mainloop()
 TODO:
 ** make AI kills distinguishable for coalitions
 """
-# licence
+# license
 # -------------------------------------------------------
 """
 This is free and unencumbered software released into the public domain.
